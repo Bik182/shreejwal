@@ -1,0 +1,148 @@
+@font-face {
+  font-family: "nexablack_italic";
+  src: url("roadrunner-webfont.woff2") format("woff2"),
+    url("roadrunner-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+$main_color: rgb(97, 50, 55);
+.port-div {
+  width: 99vw;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav-header {
+  display: flex;
+  align-self: flex-start;
+  flex-direction: column;
+  padding-left: 1%;
+}
+.nav-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 99vw;
+}
+.nav-button {
+  font-family: "nexablack_italic";
+  font-size: 45px;
+  font-weight: lighter;
+  cursor: pointer;
+  border-bottom: 5px white solid;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.header-title {
+  font-family: "nexablack_italic";
+  color: white;
+  font-style: normal;
+  font-size: 75px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+.header-back {
+  font-family: "nexablack_italic";
+  color: white;
+  font-style: normal;
+  font-size: 25px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  cursor: pointer;
+  border-bottom: 5px white solid;
+}
+.work-wrapper {
+  width: 99vw;
+  height: 100%;
+  display: flex;
+
+  align-items: center;
+}
+.work-div {
+  display: grid;
+  grid-template-columns: 250px 250px;
+  grid-auto-rows: minmax(100px, auto);
+  grid-gap: 20px;
+  justify-content: space-around;
+  align-content: center;
+
+  width: 99vw;
+}
+
+.work-image {
+  grid-column-start: 1;
+  grid-column-end: -1;
+  object-fit: contain;
+}
+.port-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 99vw;
+}
+.image-div {
+  position: relative;
+  width: 100%;
+  height: 75%;
+  align-items: center;
+  justify-content: center;
+}
+.outline-image {
+  max-width: 100%;
+  max-height: 100%;
+  border: 1px solid black;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.image-div:hover .image-div-main {
+  visibility: visible;
+}
+.image-div-main {
+  visibility: hidden;
+}
+.main-image {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 15%;
+  border: 1px solid black;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+.shreejwal-image {
+  width: 200px;
+  height: 200px;
+  background-color: white;
+  padding-bottom: 15%;
+  padding-left: 5%;  padding-right: 5%;
+  padding-top: 5%;
+  object-fit: cover;
+  align-self: center;
+  box-sizing: border-box;
+  border-radius: 1%;
+}
+.shreejwal-name {
+  font-family: "helvetica-neue-lt-std-93-black-extended";
+  font-size: 50px;
+  color: #f32951;
+}
+@media only screen and (max-width: 1000px) {
+  .port-group {
+    flex-direction: column;
+  }
+  .work-image {
+    width: 250px;
+    height: 250px;
+    margin-left: 25%;
+  }
+  .nav-header {
+    align-self: center;
+    flex-direction: column;
+
+    padding-bottom: 5%;
+  }
+}
