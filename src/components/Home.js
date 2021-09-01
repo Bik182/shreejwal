@@ -1,87 +1,70 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../App.css";
-import "./portfolio.css";
-import { useHistory } from "react-router-dom";
-
-import Portfolio from "./Portfolio";
+import "./portfolio.scss";
+import Work from "./Work";
 
 import shreejwalImage from "../images/profile_1.jpg";
 
-import guitarOutline1 from "../outlines/main_1_outline.png";
-import guitarMain1 from "../images/main_1.jpg";
-
-import drumOutline from "../outlines/main_3_outline.png";
-import drumMain from "../images/main_3.jpg";
-
-import guitarOutline2 from "../outlines/main_5_outline.png";
-import guitarMain2 from "../images/main_5.jpg";
-
-import shreejOutline1 from "../outlines/sec_3_outline.png";
-import shreejMain1 from "../images/sec_3.jpg";
-
-import shreejOutline2 from "../outlines/sec_1_outline.png";
-import shreejMain2 from "../images/sec_1.jpg";
-
-import shreejOutline3 from "../outlines/sec_4_outline.png";
-import shreejMain3 from "../images/sec_4.jpg";
 export default function Home(props) {
-  const history = useHistory();
+  useEffect(() => {
+    const faders = document.querySelectorAll(".fade-in");
+    const appearOptions = {};
+    const appearOnScroll = new IntersectionObserver(function (
+      entries,
+      appearOnScroll
+    ) {
+      entries.forEach((entry) => {
+        console.log("Fader", entry);
+        if (!entry.isIntersecting) {
+          return;
+        } else {
+          entry.target.classList.add("appear");
+          appearOnScroll.unobserve(entry.target);
+        }
+      });
+    },
+    appearOptions);
 
+    faders.forEach((fader) => {
+      appearOnScroll.observe(fader, appearOnScroll);
+    });
+    return () => {
+      faders.forEach((fader) => {
+        appearOnScroll.unobserve(fader);
+      });
+    };
+  }, []);
   return (
     <div className="App">
-      <div className="nav-header">
-        <header className="header-title">SHRJWL</header>{" "}
-        <header onClick={() => history.push("/work")} className="nav-button">
-          Work
-        </header>{" "}
-        <header onClick={() => history.push("/info")} className="nav-button">
-          Info
-        </header>
-      </div>
-
-      <div className="nav-bar">
+      <div className="info-wrapper">
         <a
           target="_blank"
           rel="noopener noreferrer"
-          href={"https://www.instagram.com/shreejwaldhakal/"}
+          href="https://www.instagram.com/shreejwaldhakal/"
+          className="image-link"
         >
-          <img src={shreejwalImage} alt="profile pic" className="shreejwal-image"></img>
+          <img src={shreejwalImage} className="shreejwal-image"></img>
         </a>
+        <div className="info-section">
+          <span className="header-name">@shreejwaldhakal</span>
+          <h1 className="header-description small">
+            At vero eos et accusamus et iusto odio dignissimos ducimus qui
+            blanditiis praesentium voluptatum deleniti atque corrupti quos
+            dolores.
+          </h1>
+          <h1 className="header-description small">
+            Et harum quidem rerum facilis est et expedita distinctio.
+          </h1>
+          <h1 className="header-description small">
+            Nam libero tempore, cum soluta nobis est.
+          </h1>
+        </div>
+        {/* <div className="info-section">
+          <h1 className="header-title">Info </h1>
+          <span className="header-description">@shreejwaldhakal</span>
+        </div> */}
       </div>
-      <div className="port-group">
-        <Portfolio
-          mainImage={guitarMain1}
-          outlineImage={guitarOutline1}
-          color={"rgb(6, 140, 209)"}
-        ></Portfolio>
-        <Portfolio
-          mainImage={guitarMain2}
-          outlineImage={guitarOutline2}
-          color={"rgb(6, 140, 209)"}
-        ></Portfolio>
-        <Portfolio
-          mainImage={drumMain}
-          outlineImage={drumOutline}
-          color={"rgb(6, 140, 209)"}
-        ></Portfolio>
-      </div>
-      <div className="port-group">
-        <Portfolio
-          mainImage={shreejMain1}
-          outlineImage={shreejOutline1}
-          color={"rgb(165, 74, 40)"}
-        ></Portfolio>
-        <Portfolio
-          mainImage={shreejMain2}
-          outlineImage={shreejOutline2}
-          color={"rgb(165, 74, 40)"}
-        ></Portfolio>
-        <Portfolio
-          mainImage={shreejMain3}
-          outlineImage={shreejOutline3}
-          color={"rgb(165, 74, 40)"}
-        ></Portfolio>
-      </div>
+      <Work></Work>
     </div>
   );
 }

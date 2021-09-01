@@ -1,7 +1,6 @@
 .App {
   text-align: center;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
 }
@@ -18,14 +17,17 @@
 }
 
 .App {
-  background-color: black;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  background-color: white;
+  justify-content: flex-start;
  
-  
   font-size: calc(10px + 2vmin);
   color: white;
+  
+  margin: 0;
+  padding: 0;
+ 
 }
 
 .App-link {
@@ -39,4 +41,11 @@
   to {
     transform: rotate(360deg);
   }
+}
+@media only screen and (max-width: 1338px) {
+  .App {
+    flex-direction: column;
+  }
+  
+  
 }

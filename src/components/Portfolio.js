@@ -5,19 +5,10 @@ export default function Portfolio(props) {
     <div className="port-div">
       <div className="image-div">
         <img
-          style={{ backgroundColor: "transparent" }}
-          className="outline-image"
-          src={props.outlineImage}
-          alt="outline image"
+          className="main-image"
+          alt="main image"
+          src={props.mainImage}
         ></img>
-        <div className="image-div-main">
-          <img
-            style={{ backgroundColor: props.color }}
-            className="main-image"
-            alt="main image"
-            src={props.mainImage}
-          ></img>
-        </div>
       </div>
     </div>
   );
